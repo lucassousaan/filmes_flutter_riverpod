@@ -52,6 +52,8 @@ dependencies:
   cached_network_image: ^3.4.1
   google_fonts: ^6.3.0
   intl: ^0.20.2
+  equatable: ^2.0.7
+  dartz: ^0.10.1
 
   # Immutability & Code Generation Helpers
   freezed_annotation: ^3.1.0
