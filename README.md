@@ -17,7 +17,7 @@ Para rodar este projeto localmente, siga os passos abaixo.
 
 1.  **Clone o repositório:**
     ```bash
-    git clone [filmes_flutter_riverpod](https://github.com/lucassousaan/filmes_flutter_riverpod.git)
+    git clone https://github.com/lucassousaan/filmes_flutter_riverpod.git
     cd filmes_flutter_riverpod
     ```
 
