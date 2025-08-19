@@ -1,16 +1,44 @@
-# filmes_flutter_riverpod
+# Movie App Riverpod
 
-A new Flutter project.
+Aplicativo de filmes desenvolvido em Flutter, utilizando Clean Architecture, Riverpod para gerenciamento de estado e a API do The Movie Database (TMDb).
 
-## Getting Started
+Este projeto foi criado para fins de estudo, aplicando conceitos avançados de desenvolvimento mobile.
 
-This project is a starting point for a Flutter application.
+## 🚀 Começando
 
-A few resources to get you started if this is your first Flutter project:
+Para rodar este projeto localmente, siga os passos abaixo.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Pré-requisitos
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+-   [Flutter SDK](https://flutter.dev/docs/get-started/install) instalado.
+-   Uma [chave de API do TMDb](https://www.themoviedb.org/settings/api).
+
+### Instalação e Execução
+
+1.  **Clone o repositório:**
+    ```bash
+    git clone [https://github.com/lucassousaan/filmes_flutter_riverpod.git](https://github.com/lucassousaan/filmes_flutter_riverpod.git)
+    cd filmes_flutter_riverpod
+    ```
+
+2.  **Crie o arquivo de segredos:**
+    Na raiz do projeto, crie um arquivo chamado `.env` e adicione sua chave da API do TMDb nele:
+    ```
+    API_KEY=SUA_CHAVE_DA_API_AQUI
+    ```
+
+3.  **Instale as dependências:**
+    ```bash
+    flutter pub get
+    ```
+
+4.  **Gere os arquivos de código:**
+    Este projeto utiliza `build_runner` para gerar arquivos necessários. Execute o comando abaixo.
+    ```bash
+    dart run build_runner build --delete-conflicting-outputs
+    ```
+
+5.  **Execute o aplicativo:**
+    ```bash
+    flutter run
+    ```
