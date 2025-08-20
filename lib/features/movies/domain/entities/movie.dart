@@ -1,20 +1,14 @@
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class Movie extends Equatable {
-  final int id;
-  final String title;
-  final String overview;
-  final String posterPath;
-  final double voteAverage;
+part 'movie.freezed.dart';
 
-  const Movie({
-    required this.id,
-    required this.title,
-    required this.overview,
-    required this.posterPath,
-    required this.voteAverage,
-  });
-
-  @override
-  List<Object?> get props => [id, title, overview, posterPath, voteAverage];
+@freezed
+abstract class Movie with _$Movie {
+  const factory Movie({
+    required int id,
+    required String title,
+    required String overview,
+    required String posterPath,
+    required double voteAverage,
+  }) = _Movie;
 }
