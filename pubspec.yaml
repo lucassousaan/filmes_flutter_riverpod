@@ -50,7 +50,7 @@ dependencies:
 
   # UI & Utils
   cached_network_image: ^3.4.1
-  google_fonts: ^6.3.0
+  google_fonts: ^6.3.1
   intl: ^0.20.2
   equatable: ^2.0.7
   dartz: ^0.10.1
