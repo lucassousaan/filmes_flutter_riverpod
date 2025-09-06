@@ -37,21 +37,60 @@ class MovieRepositoryImpl implements MovieRepository {
   }
 
   @override
-  Future<Either<Failure, List<Movie>>> getTopRatedMovies() {
-    // TODO: implement getTopRatedMovies
-    throw UnimplementedError();
+  Future<Either<Failure, List<Movie>>> getTopRatedMovies() async {
+    try {
+      final response = await remoteDataSource.getTopRatedMovies();
+
+      final movieModels = response.results;
+
+      final movies = movieModels.map((model) => model.toEntity()).toList();
+
+      return Right(movies);
+    } on DioException catch (e) {
+      return Left(
+        ServerFailure('Erro ao buscar dados do servidor: ${e.message}'),
+      );
+    } catch (e) {
+      return Left(GeneralFailure('Um erro inesperado aconteceu: $e'));
+    }
   }
 
   @override
-  Future<Either<Failure, List<Movie>>> getTrendingMovies() {
-    // TODO: implement getTrendingMovies
-    throw UnimplementedError();
+  Future<Either<Failure, List<Movie>>> getTrendingMovies() async {
+    try {
+      final response = await remoteDataSource.getTrendingMovies();
+
+      final movieModels = response.results;
+
+      final movies = movieModels.map((model) => model.toEntity()).toList();
+
+      return Right(movies);
+    } on DioException catch (e) {
+      return Left(
+        ServerFailure('Erro ao buscar dados do servidor: ${e.message}'),
+      );
+    } catch (e) {
+      return Left(GeneralFailure('Um erro inesperado aconteceu: $e'));
+    }
   }
 
   @override
-  Future<Either<Failure, List<Movie>>> getUpcomingMovies() {
-    // TODO: implement getUpcomingMovies
-    throw UnimplementedError();
+  Future<Either<Failure, List<Movie>>> getUpcomingMovies() async {
+    try {
+      final response = await remoteDataSource.getUpcomingMovies();
+
+      final movieModels = response.results;
+
+      final movies = movieModels.map((model) => model.toEntity()).toList();
+
+      return Right(movies);
+    } on DioException catch (e) {
+      return Left(
+        ServerFailure('Erro ao buscar dados do servidor: ${e.message}'),
+      );
+    } catch (e) {
+      return Left(GeneralFailure('Um erro inesperado aconteceu: $e'));
+    }
   }
 
   @override

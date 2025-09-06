@@ -12,4 +12,15 @@ abstract class MovieRemoteDataSource {
 
   @GET('/movie/popular')
   Future<MovieListResponse> getPopularMovies();
+
+  @GET('/movie/top_rated')
+  Future<MovieListResponse> getTopRatedMovies();
+
+  @GET('/movie/upcoming')
+  Future<MovieListResponse> getUpcomingMovies(
+      {@Query("region") String region = 'BR'});
+
+  @GET('/trending/movie/{time_window}')
+  Future<MovieListResponse> getTrendingMovies(
+      {@Path('time_window') String timeWindow = 'day'});
 }
