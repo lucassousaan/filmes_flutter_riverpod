@@ -10,5 +10,6 @@ abstract class Movie with _$Movie {
     required String overview,
     required String posterPath,
     required double voteAverage,
+    required String releaseYear,
   }) = _Movie;
 }

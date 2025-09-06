@@ -12,6 +12,7 @@ abstract class MovieModel with _$MovieModel {
     required String overview,
     @JsonKey(name: 'poster_path') String? posterPath,
     @JsonKey(name: 'vote_average') required double voteAverage,
+    @JsonKey(name: 'release_date') String? releaseDate,
   }) = _MovieModel;
 
   factory MovieModel.fromJson(Map<String, dynamic> json) =>
@@ -26,6 +27,9 @@ extension MovieModelX on MovieModel {
       overview: overview,
       posterPath: posterPath ?? '',
       voteAverage: voteAverage,
+      releaseYear: releaseDate?.isNotEmpty == true
+          ? releaseDate!.substring(0, 4)
+          : 'N/A',
     );
   }
 }

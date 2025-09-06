@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../models/movie_list_response.dart';
+import '../models/movie_model.dart';
 
 part 'movie_remote_data_source.g.dart';
 
@@ -23,4 +24,7 @@ abstract class MovieRemoteDataSource {
   @GET('/trending/movie/{time_window}')
   Future<MovieListResponse> getTrendingMovies(
       {@Path('time_window') String timeWindow = 'day'});
+
+  @GET('/movie/{movie_id}')
+  Future<MovieModel> getMovieDetails({@Path('movie_id') required int movieId});
 }

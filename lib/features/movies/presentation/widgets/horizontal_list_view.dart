@@ -2,6 +2,7 @@ import 'package:filmes_flutter_riverpod/features/movies/domain/entities/movie.da
 import 'package:flutter/material.dart';
 
 import 'movie_card.dart';
+import 'movie_details_sheet.dart';
 
 class HorizontalListView extends StatelessWidget {
   final List<Movie> movies;
@@ -18,7 +19,23 @@ class HorizontalListView extends StatelessWidget {
         itemCount: movies.length,
         itemBuilder: (context, index) {
           final movie = movies[index];
-          return MovieCard(movie: movie);
+          return MovieCard(
+            movie: movie,
+            onTap: (movieCallback) {
+              showModalBottomSheet(
+                context: context,
+                isScrollControlled: true,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(20),
+                  ),
+                ),
+                builder: (context) {
+                  return MovieDetailsSheet(movieId: movieCallback.id);
+                },
+              );
+            },
+          );
         },
       ),
     );

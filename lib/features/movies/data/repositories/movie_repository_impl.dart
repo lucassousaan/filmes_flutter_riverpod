@@ -31,9 +31,20 @@ class MovieRepositoryImpl implements MovieRepository {
   }
 
   @override
-  Future<Either<Failure, Movie>> getMovieDetails(int movieId) {
-    // TODO: implement getMovieDetails
-    throw UnimplementedError();
+  Future<Either<Failure, Movie>> getMovieDetails(int movieId) async {
+    try {
+      final movieModel =
+          await remoteDataSource.getMovieDetails(movieId: movieId);
+
+      final movie = movieModel.toEntity();
+
+      return Right(movie);
+    } on DioException catch (e) {
+      return Left(
+          ServerFailure('Erro ao buscar dados do servidor: ${e.message}'));
+    } catch (e) {
+      return Left(GeneralFailure('Um erro inesperado aconteceu: $e'));
+    }
   }
 
   @override
