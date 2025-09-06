@@ -222,7 +222,7 @@ class MaterialTheme {
   }
 
   ThemeData dark() {
-    return theme(darkMediumContrastScheme());
+    return theme(darkScheme());
   }
 
   static ColorScheme darkMediumContrastScheme() {

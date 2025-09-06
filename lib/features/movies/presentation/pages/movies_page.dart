@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'movies_screen.dart';
+
 class MoviesPage extends StatefulWidget {
   const MoviesPage({super.key});
 
@@ -11,7 +13,7 @@ class _MoviesPageState extends State<MoviesPage> {
   int _selectedIndex = 0;
 
   static const List<Widget> _widgetOptions = <Widget>[
-    MoviesList(),
+    MoviesScreen(),
     Center(child: Text('Página de Busca')),
     Center(child: Text('Página de Favoritos')),
   ];
@@ -44,29 +46,6 @@ class _MoviesPageState extends State<MoviesPage> {
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
       ),
-    );
-  }
-}
-
-// Widget separado para a lista de filmes, para manter o código organizado.
-class MoviesList extends StatelessWidget {
-  const MoviesList({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: 20,
-      itemBuilder: (context, index) {
-        return Card(
-          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          child: ListTile(
-            leading: const Icon(Icons.theaters),
-            title: Text('Filme de Exemplo Nº ${index + 1}'),
-            subtitle: const Text('Toque para ver detalhes'),
-            onTap: () {},
-          ),
-        );
-      },
     );
   }
 }
