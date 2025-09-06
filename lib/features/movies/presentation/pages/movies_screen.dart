@@ -1,7 +1,8 @@
 import 'package:filmes_flutter_riverpod/features/movies/presentation/providers/movie_presentation_providers.dart';
-import 'package:filmes_flutter_riverpod/features/movies/presentation/widgets/horizontal_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../widgets/movie_category_section.dart';
 
 class MoviesScreen extends ConsumerWidget {
   const MoviesScreen({super.key});
@@ -15,113 +16,21 @@ class MoviesScreen extends ConsumerWidget {
 
     return ListView(
       children: [
-        topRatedMoviesAsync.when(
-          loading: () => SizedBox(
-            height: 220,
-            child: const Center(child: CircularProgressIndicator()),
-          ),
-          error: (err, stack) => Center(child: Text('Erro: $err')),
-          data: (movies) {
-            return SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Text(
-                      'Melhores Avaliados',
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  HorizontalListView(movies: movies),
-                ],
-              ),
-            );
-          },
+        MovieCategorySection(
+          title: "Melhores Avaliados",
+          moviesAsync: topRatedMoviesAsync,
         ),
-        popularMoviesAsync.when(
-          loading: () => SizedBox(
-            height: 220,
-            child: const Center(child: CircularProgressIndicator()),
-          ),
-          error: (err, stack) => Center(child: Text('Erro: $err')),
-          data: (movies) {
-            return SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Text(
-                      'Populares',
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  HorizontalListView(movies: movies),
-                ],
-              ),
-            );
-          },
+        MovieCategorySection(
+          title: "Populares",
+          moviesAsync: popularMoviesAsync,
         ),
-        upcomingMoviesAsync.when(
-          loading: () => SizedBox(
-            height: 220,
-            child: const Center(child: CircularProgressIndicator()),
-          ),
-          error: (err, stack) => Center(child: Text('Erro: $err')),
-          data: (movies) {
-            return SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Text(
-                      'Próximos Lançamentos',
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  HorizontalListView(movies: movies),
-                ],
-              ),
-            );
-          },
+        MovieCategorySection(
+          title: "Próximos Lançamentos",
+          moviesAsync: upcomingMoviesAsync,
         ),
-        trendingMoviesAsync.when(
-          loading: () => SizedBox(
-            height: 220,
-            child: const Center(child: CircularProgressIndicator()),
-          ),
-          error: (err, stack) => Center(child: Text('Erro: $err')),
-          data: (movies) {
-            return SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Text(
-                      'Em Alta Hoje',
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  HorizontalListView(movies: movies),
-                ],
-              ),
-            );
-          },
+        MovieCategorySection(
+          title: "Em Alta Hoje",
+          moviesAsync: trendingMoviesAsync,
         ),
       ],
     );
