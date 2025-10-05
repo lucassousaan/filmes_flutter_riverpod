@@ -24,6 +24,10 @@ jobs:
       
       - name: Install dependencies
         run: flutter pub get
+      
+      - name: Create .env file
+        run: |
+          echo "API_KEY=${{ secrets.API_KEY }}" >> .env
 
       - name: Run code gen
         run: dart run build_runner build
